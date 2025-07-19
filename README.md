@@ -23,7 +23,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ## Functions
 
-### `prepare_cosine_filter.py`
+### `msfun_setup_cosine_filter.py`
 **Purpose:** Create frequency-domain cosine filter coefficients and the corresponding time-domain taper.  
 **Inputs:** 
 - `cfg`: Dictionary with keys like `'win'`, `'par'`, `'freq'`, `'width'`
