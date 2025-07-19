@@ -2,9 +2,9 @@ import numpy as np
 from scipy.fft import fft, ifft
 from warnings import warn
 from copy import deepcopy
-from prepare_cosine_filter import prepare_cosine_filter
+from msfun_prepare_cosine_filter import msfun_prepare_cosine_filter
 
-def sig_filter(sig, cfg):
+def msfun_sig_filter(sig, cfg):
     """
     Applies a spectral cosine filter to a 2D or 3D signal array.
     """
