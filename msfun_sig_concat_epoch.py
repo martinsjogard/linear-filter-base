@@ -1,6 +1,6 @@
 import numpy as np
 
-def msfun_sigproc_concat_epoch(sig, L, type=None):
+def msfun_sig_concat_epoch(sig, L, type=None):
     """
     Concatenate or epoch a signal array.
 
