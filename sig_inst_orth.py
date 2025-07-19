@@ -1,6 +1,6 @@
 import numpy as np
 
-def sig_inst_orth(X, Y):
+def msfun_sig_inst_orth(X, Y):
     """
     Instantaneously orthogonalize signal X with respect to Y.
 
