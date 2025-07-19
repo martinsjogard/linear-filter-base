@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.signal import get_window
 
-def prepare_cosine_filter(opt, T, Fs):
+def msfun_setup_cosine_filter(opt, T, Fs):
     """
     Compute the window and frequency filter matrix for FFT-based filtering.
     """
