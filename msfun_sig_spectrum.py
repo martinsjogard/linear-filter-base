@@ -1,7 +1,7 @@
 import numpy as np
 from warnings import warn
 
-def sig_spectrum(sig, cfg):
+def msfun_sig_spectrum(sig, cfg):
     """
     Compute FFT-based spectrum of a 2D or 3D time series signal.
 
@@ -19,7 +19,7 @@ def sig_spectrum(sig, cfg):
     """
 
     if sig is None or cfg is None:
-        raise ValueError("sig_spectrum requires both signal and configuration")
+        raise ValueError("msfun_sig_spectrum requires both signal and configuration")
 
     if not isinstance(sig, np.ndarray):
         raise TypeError("Signal must be a numeric array")
@@ -62,7 +62,7 @@ def sig_spectrum(sig, cfg):
     # Epoch averaging
     if average:
         if cfg_type == 'fourier':
-            warn("sig_spectrum - Averaging Fourier coefficients is unusual...")
+            warn("msfun_sig_spectrum - Averaging Fourier coefficients is unusual...")
         Ssig = np.mean(Ssig, axis=0)
 
     # Spectral summary
