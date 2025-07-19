@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.signal import hilbert
 
-def sig_slow_modulation(Z, fcenter):
+def msfun_sig_slow_modulation(Z, fcenter):
     """
     Remove fast oscillation at fcenter from signal Z, keeping only slow modulations.
 
