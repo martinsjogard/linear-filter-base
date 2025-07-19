@@ -2,7 +2,7 @@
 
 # Signal Processing Toolbox for Electrophysiological Data (Python)
 
-This repository provides a collection of Python functions for preprocessing and analyzing EEG/MEG time-series data. Originally translated from MATLAB, these tools enable flexible and efficient workflows for spectral analysis, signal orthogonalization, leakage correction, filtering, and data preprocessing across various electrophysiological formats.
+This repository provides a collection of Python functions for preprocessing and analyzing EEG/MEG time-series data. These tools enable flexible and efficient workflows for spectral analysis, signal orthogonalization, leakage correction, filtering, and data preprocessing across various electrophysiological formats.
 
 ---
 
@@ -35,7 +35,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_filter.py`
+### `msfun_sig_filter.py`
 **Purpose:** Apply frequency-domain cosine filter to 2D or 3D signal.  
 **Inputs:** 
 - `X`: Signal array (`[chan x time]` or `[epoch x chan x time]`)
@@ -46,7 +46,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_spectrum.py`
+### `msfun_sig_spectrum.py`
 **Purpose:** Compute power spectrum of filtered signal.  
 **Inputs:** 
 - `X`: Input signal (2D or 3D)
@@ -58,7 +58,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_slow_modulation.py`
+### `msfun_sig_slow_modulation.py`
 **Purpose:** Extract slow modulation (amplitude or phase) from narrowband analytic signal.  
 **Inputs:** 
 - `Z`: Complex analytic signal or real-valued narrowband signal
@@ -68,7 +68,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_downsample.py`
+### `msfun_msfun_sig_downsample.py`
 **Purpose:** Downsample signal along time axis.  
 **Inputs:** 
 - `X`: Signal (2D or 3D)
@@ -78,7 +78,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_concat_epoch.py`
+### `msfun_sig_concat_epoch.py`
 **Purpose:** Concatenate or epoch signal based on epoch number or length.  
 **Inputs:** 
 - `sig`: Input signal
@@ -89,7 +89,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_inst_orth.py`
+### `msfun_sig_inst_orth.py`
 **Purpose:** Orthogonalize `X` with respect to `Y` by removing the best linear instantaneous real-valued model.  
 **Inputs:** 
 - `X`: Complex signal to be corrected
@@ -99,7 +99,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_analytic.py`
+### `msfun_sig_analytic.py`
 **Purpose:** Compute analytic signal via Hilbert transform along a specified axis.  
 **Inputs:** 
 - `X`: Real-valued array
@@ -109,7 +109,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_leakcorr.py`
+### `msfun_sig_leakcorr.py`
 **Purpose:** Correct spatial leakage using orthogonalization, regression, or custom coefficients.  
 **Inputs:** 
 - `X`: Target signal
@@ -120,7 +120,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_preprocess_fiff.py`
+### `msfun_sig_preprocess_fiff.py`
 **Purpose:** Read and preprocess signal from a FIFF file.  
 **Inputs:** 
 - `raw`: MNE Raw object
@@ -132,7 +132,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `sig_preprocess_mff.py`
+### `msfun_sig_preprocess_mff.py`
 **Purpose:** Read and preprocess MFF (EGI) recordings using FieldTrip-compatible interface.  
 **Inputs:** 
 - `times`: Time array
@@ -149,13 +149,13 @@ These tools are intended for neuroscientific research, especially involving time
 Import the functions as needed in your own scripts or Jupyter notebooks. Example:
 
 ```python
-from sig_filter import sig_filter
-filtered_data = sig_filter(raw_data, sfreq, cfg)
+from msfun_sig_filter import msfun_sig_filter
+filtered_data = msfun_sig_filter(raw_data, sfreq, cfg)
 ```
 
 ## Dependencies
 Python 3.8+
 NumPy
 SciPy
-MNE-Python (for sig_preprocess_fiff)
-FieldTrip/MAT interface (for sig_preprocess_mff)
+MNE-Python (for msfun_sig_preprocess_fiff)
+FieldTrip/MAT interface (for msfun_sig_preprocess_mff)
