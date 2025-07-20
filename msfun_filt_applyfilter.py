@@ -2,7 +2,7 @@ import numpy as np
 from scipy.fft import fft, ifft
 from warnings import warn
 from copy import deepcopy
-from msfun_prepare_cosine_filter import msfun_prepare_cosine_filter
+from msfun_filt_preparecosine import msfun_filt_preparecosine
 
 def msfun_sig_filter(sig, cfg):
     """
