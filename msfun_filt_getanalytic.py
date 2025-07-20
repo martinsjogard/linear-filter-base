@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.fft import fft, ifft
 
-def msfun_sig_compute_analytic(X, dim=None):
+def msfun_filt_getanalytic(X, dim=None):
     """
     Compute the analytic signal of real array X along dimension `dim`.
 
