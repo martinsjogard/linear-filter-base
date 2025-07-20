@@ -1,9 +1,9 @@
 import numpy as np
 from scipy.fft import fft, ifft
 from mne.io import Raw
-from msfun_prepare_cosine_filter import msfun_prepare_cosine_filter
+from msfun_filt_preparecosine import msfun_filt_preparecosine
 
-def msfun_sig_preprocess_fiff(raw: Raw, times, cfg):
+def msfun_filt_preprocfiff(raw: Raw, times, cfg):
     """
     Reads and preprocesses signals from an MNE Raw object with selected channels and time samples.
 
@@ -72,13 +72,13 @@ def msfun_sig_preprocess_fiff(raw: Raw, times, cfg):
         print("sig_preprocess_fiff - Filtering data...")
         sfreq = raw.info['sfreq']
         if sig.ndim == 2:
-            win, F = msfun_prepare_cosine_filter(cfg['filt'], sig.shape[1], sfreq)
+            win, F = msfun_filt_preparecosine(cfg['filt'], sig.shape[1], sfreq)
             win = win.reshape(1, -1)
             F = F.reshape(1, -1)
             Fsig = fft(sig * win, axis=1)
             sig = np.real(ifft(Fsig * F, axis=1))
         else:
-            win, F = msfun_prepare_cosine_filter(cfg['filt'], sig.shape[2], sfreq)
+            win, F = msfun_filt_preparecosine(cfg['filt'], sig.shape[2], sfreq)
             for k in range(sig.shape[0]):
                 X = sig[k, :, :]
                 FX = fft(X * win.reshape(1, -1), axis=1)
