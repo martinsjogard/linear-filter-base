@@ -1,6 +1,6 @@
 import numpy as np
 
-def msfun_sig_downsample(sig, cfg):
+def msfun_filt_downsample(sig, cfg):
     """
     Downsamples signal along time axis.
 
