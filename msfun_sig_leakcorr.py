@@ -1,6 +1,6 @@
 import numpy as np
 
-def msfun_sig_leakcorr(X, Y, cfg):
+def msfun_filt_removeleakage(X, Y, cfg):
     """
     Apply leakage correction from signal Y to signal X.
 
