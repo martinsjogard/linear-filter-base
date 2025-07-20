@@ -1,9 +1,9 @@
 import numpy as np
 from scipy.fft import fft, ifft
-from msfun_prepare_cosine_filter import msfun_prepare_cosine_filter
+from msfun_filt_preparecosine import msfun_filt_preparecosine
 import mne
 
-def sig_preprocess_mff(times, sfreq, cfg):
+def msfun_filt_preprocmff(times, sfreq, cfg):
     """
     Reads and preprocesses signals from an MFF file with selected channels and time samples.
 
@@ -47,7 +47,7 @@ def sig_preprocess_mff(times, sfreq, cfg):
     sfreq = raw.info['sfreq']
 
     # Time sample selection
-    print("msfun_sig_preprocess_mff - Getting the right time samples...")
+    print("msfun_msfun_filt_preprocmff - Getting the right time samples...")
     T = (times * sfreq).astype(int)
     T = T - T.min()
     if times.ndim == 1 or times.shape[0] == 1:
@@ -61,13 +61,13 @@ def sig_preprocess_mff(times, sfreq, cfg):
 
     # Filtering
     if cfg['filter']:
-        print("msfun_sig_preprocess_mff - Filtering data...")
+        print("msfun_msfun_filt_preprocmff - Filtering data...")
         if sig.ndim == 2:
-            win, F = msfun_prepare_cosine_filter(cfg['filt'], sig.shape[1], sfreq)
+            win, F = msfun_filt_preparecosine(cfg['filt'], sig.shape[1], sfreq)
             Fsig = fft(sig * win.reshape(1, -1), axis=1)
             sig = np.real(ifft(Fsig * F.reshape(1, -1), axis=1))
         else:
-            win, F = msfun_prepare_cosine_filter(cfg['filt'], sig.shape[2], sfreq)
+            win, F = msfun_filt_preparecosine(cfg['filt'], sig.shape[2], sfreq)
             for k in range(sig.shape[0]):
                 X = sig[k, :, :]
                 FX = fft(X * win.reshape(1, -1), axis=1)
@@ -75,7 +75,7 @@ def sig_preprocess_mff(times, sfreq, cfg):
 
     # Baseline correction
     if cfg['blc']:
-        print("msfun_sig_preprocess_mff - Applying baseline correction...")
+        print("msfun_msfun_filt_preprocmff - Applying baseline correction...")
         if sig.ndim == 2:
             n = np.where(np.diff((sfreq * times).astype(int)) > 1)[0]
             n = np.concatenate(([0], n, [times.shape[1]]))
@@ -87,5 +87,5 @@ def sig_preprocess_mff(times, sfreq, cfg):
                 avg = np.mean(sig[k, :, :], axis=1, keepdims=True)
                 sig[k, :, :] -= avg
 
-    print("msfun_sig_preprocess_mff - Data preprocessed and ready.")
+    print("msfun_msfun_filt_preprocmff - Data preprocessed and ready.")
     return sig, cfg
