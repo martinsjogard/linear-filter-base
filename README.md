@@ -23,7 +23,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ## Functions
 
-### `msfun_setup_cosine_filter.py`
+### `msfun_filt_preparecosine.py`
 **Purpose:** Create frequency-domain cosine filter coefficients and the corresponding time-domain taper.  
 **Inputs:** 
 - `cfg`: Dictionary with keys like `'win'`, `'par'`, `'freq'`, `'width'`
@@ -35,7 +35,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_filter.py`
+### `msfun_filt_applyfilter.py`
 **Purpose:** Apply frequency-domain cosine filter to 2D or 3D signal.  
 **Inputs:** 
 - `X`: Signal array (`[chan x time]` or `[epoch x chan x time]`)
@@ -46,7 +46,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_spectrum.py`
+### `msfun_filt_computespectrum.py`
 **Purpose:** Compute power spectrum of filtered signal.  
 **Inputs:** 
 - `X`: Input signal (2D or 3D)
@@ -68,7 +68,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_msfun_sig_downsample.py`
+### `msfun_filt_downsample.py`
 **Purpose:** Downsample signal along time axis.  
 **Inputs:** 
 - `X`: Signal (2D or 3D)
@@ -78,7 +78,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_concat_epoch.py`
+### `msfun_filt_concatenate.py`
 **Purpose:** Concatenate or epoch signal based on epoch number or length.  
 **Inputs:** 
 - `sig`: Input signal
@@ -89,7 +89,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_inst_orth.py`
+### `msfun_filt_orthogonalize.py`
 **Purpose:** Orthogonalize `X` with respect to `Y` by removing the best linear instantaneous real-valued model.  
 **Inputs:** 
 - `X`: Complex signal to be corrected
@@ -99,7 +99,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_analytic.py`
+### `msfun_filt_getanalytic.py`
 **Purpose:** Compute analytic signal via Hilbert transform along a specified axis.  
 **Inputs:** 
 - `X`: Real-valued array
@@ -120,7 +120,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_preprocess_fiff.py`
+### `msfun_filt_preprocfiff.py`
 **Purpose:** Read and preprocess signal from a FIFF file.  
 **Inputs:** 
 - `raw`: MNE Raw object
@@ -132,7 +132,7 @@ These tools are intended for neuroscientific research, especially involving time
 
 ---
 
-### `msfun_sig_preprocess_mff.py`
+### `msfun_filt_preprocmff.py`
 **Purpose:** Read and preprocess MFF (EGI) recordings using FieldTrip-compatible interface.  
 **Inputs:** 
 - `times`: Time array
@@ -149,13 +149,13 @@ These tools are intended for neuroscientific research, especially involving time
 Import the functions as needed in your own scripts or Jupyter notebooks. Example:
 
 ```python
-from msfun_sig_filter import msfun_sig_filter
-filtered_data = msfun_sig_filter(raw_data, sfreq, cfg)
+from msfun_filt_applyfilter import msfun_filt_applyfilter
+filtered_data = msfun_filt_applyfilter(raw_data, sfreq, cfg)
 ```
 
 ## Dependencies
 Python 3.8+
 NumPy
 SciPy
-MNE-Python (for msfun_sig_preprocess_fiff)
-FieldTrip/MAT interface (for msfun_sig_preprocess_mff)
+MNE-Python (for msfun_filt_preprocfiff)
+FieldTrip/MAT interface (for msfun_filt_preprocmff)
